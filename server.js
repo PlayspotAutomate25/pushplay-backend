@@ -40,9 +40,9 @@ app.get("/", (req, res) => {
 });
 
 // Error handling middleware
-app.use((err, req, res, next) => {
-  console.error("Unhandleed Error:", err.stack);
-  res.status(500).json({ error: "Something went wrong on the server." });
+app.use((req, res, next) => {
+  console.log("Incoming request:", req.method, req.url);
+  next();
 });
 
 // Start the server
